@@ -22,51 +22,35 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# classroom-allocation
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+> A REST API for allocating students to classrooms (a [clicksoft](https://clicksoft.com.br/) challenge)
 
-## Installation
+Preview
 
-```bash
-$ npm install
-```
+![classroom-nest](https://user-images.githubusercontent.com/82974806/161360962-5e8c81c5-7949-41a1-bdec-a651db7f53c6.png)
 
-## Running the app
+## 🛠 Technologies and Tools used
+- [NodeJS](https://nodejs.org/en/download/)
+- [Nest](https://docs.nestjs.com/)
+- [TypeORM](https://typeorm.io/relational-query-builder)
+- [Typescript](https://www.typescriptlang.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Insomnia](https://insomnia.rest/download)
+- [Visual Studio Code](https://code.visualstudio.com/download)
 
-```bash
-# development
-$ npm run start
 
-# watch mode
-$ npm run start:dev
+## ⚙️ Install Locally
 
-# production mode
-$ npm run start:prod
-```
+1. Clone the repository: ```git@github.com:gabrieltav/classroom-nestjs.git```
+2. Unzip and open with visual studio code
+3. Run ```yarn install``` to configure dependencies
+4. Run the server with ```yarn start:dev```
+5. Test, change, run endpoints and give a 👍
 
-## Test
+<br>
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+> with ❤️ by [Gabriel Tavares](https://www.linkedin.com/in/gabrielltav/)
 
 ## License
 
