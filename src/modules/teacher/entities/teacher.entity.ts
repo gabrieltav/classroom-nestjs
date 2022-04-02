@@ -1,3 +1,4 @@
+import { Classe } from 'src/modules/class/entities/class.entity';
 import {
   BaseEntity,
   Column,
@@ -6,6 +7,7 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({
@@ -27,9 +29,12 @@ export class Teacher extends BaseEntity {
   @Column('text')
   birthDate: Date;
 
+  @OneToMany(() => Classe, (classe) => classe.teacher)
+  classe: Classe[];
+
   @CreateDateColumn({ name: 'created_At' })
   createdAt: Date;
 
-  @CreateDateColumn({ name: 'update_At' })
+  @UpdateDateColumn({ name: 'update_At' })
   updateAt: Date;
 }

@@ -1,26 +1,61 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException, Post } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { table } from 'console';
+import { Repository } from 'typeorm';
+import { CreateStudentDto } from '../students/dto/create-student.dto';
+import { Student } from '../students/entities/student.entity';
+import { Teacher } from '../teacher/entities/teacher.entity';
 import { CreateClassDto } from './dto/create-class.dto';
 import { UpdateClassDto } from './dto/update-class.dto';
+import { Classe } from './entities/class.entity';
 
 @Injectable()
 export class ClassService {
-  create(createClassDto: CreateClassDto) {
-    return 'This action adds a new class';
+  constructor(
+    @InjectRepository(Classe)
+    private classeRepository: Repository<Classe>,
+    
+    @InjectRepository(Teacher)
+    private teacherRepository: Repository<Teacher>,
+
+    @InjectRepository(Teacher)
+    private studentRepository: Repository<Student>,
+  ) {}
+
+  async create(createClassDto: CreateClassDto) {
+    const {} = createClassDto;
+    const classe = await this.classeRepository.create(createClassDto);
+
+    return classe.save();
   }
 
-  findAll() {
-    return `This action returns all class`;
+  async findAll() {
+    return await this.classeRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} class`;
+  async findOne(id: string) {
+    const classe = await this.classeRepository.findOne({ where: { id } });
+    if (!classe) {
+      throw new NotFoundException(`Class ID ${id} not found`);
+    }
+    return classe;
   }
 
-  update(id: number, updateClassDto: UpdateClassDto) {
-    return `This action updates a #${id} class`;
+  async update(id: string, updateClassDto: UpdateClassDto) {
+    const classe = await this.classeRepository.findOne({ where: { id } });
+    if (!classe) {
+      throw new NotFoundException(`Classe ID ${id} not found`);
+    }
+    await this.classeRepository.update({ id }, updateClassDto);
+    return await this.classeRepository.findOne({ where: { id } });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} class`;
+  async remove(id: string) {
+    const classe = await this.classeRepository.findOne({ where: { id } });
+    if (!classe) {
+      throw new NotFoundException(`Classe ID ${id} not found`);
+    }
+    await this.classeRepository.delete(id);
+    return `Classe ID ${id} successfully deleted`;
   }
 }

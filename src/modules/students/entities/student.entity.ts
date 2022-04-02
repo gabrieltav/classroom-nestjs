@@ -7,6 +7,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   Unique,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity({
@@ -31,6 +32,6 @@ export class Student extends BaseEntity {
   @CreateDateColumn({ name: 'created_At' })
   createdAt: Date;
 
-  @CreateDateColumn({ name: 'update_At' })
+  @UpdateDateColumn({ name: 'update_At' })
   updateAt: Date;
 }

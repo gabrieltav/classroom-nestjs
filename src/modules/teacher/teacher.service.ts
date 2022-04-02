@@ -37,7 +37,7 @@ export class TeacherService {
       throw new NotFoundException(`Teacher ID ${id} not found`);
     }
     await this.teacherRepository.update({ id }, updateTeacherDto);
-    return teacher;
+    return await this.teacherRepository.findOne({ where: { id } });
   }
 
   async remove(id: string) {
